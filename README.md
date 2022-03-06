@@ -1,4 +1,4 @@
-#HOW TO RUN
+# HOW TO RUN
 
 docker build -t leo:v1.0 .
 
