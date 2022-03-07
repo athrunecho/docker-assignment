@@ -1,6 +1,12 @@
-# HOW TO RUN
+# Build And Push
 
 docker build -t athrunecho/assignment:v1.0 .
+
+docker login
+
+docker push athrunecho/assignment:v1.0
+
+# HOW TO RUN
 
 docker pull athrunecho/assignment:v1.0
 
