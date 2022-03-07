@@ -1,9 +1,17 @@
-FROM golang:1.17
+FROM golang:1.17 AS build
 
 COPY main.go /go/src
 
 WORKDIR /go/src
 
-RUN go build -o http-server main.go
+RUN GOOS=linux go build -tags netgo -o http-server main.go
 
-CMD ["/go/src/http-server"]
+
+
+FROM busybox
+
+COPY --from=build /go/src/http-server /http-server
+
+EXPOSE 8080
+
+CMD ["./http-server"]
